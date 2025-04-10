@@ -3,7 +3,7 @@ using UnityEngine;
 public class Takedown : MonoBehaviour
 {
 
-    public float takedownRange = 2f;
+    public const float takedownRange = 0.8f;
     public LayerMask Enemy;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,9 +46,10 @@ public class Takedown : MonoBehaviour
                  float dotProd = Vector3.Dot(playerDirection, toEnemy);
 
                  // if in threshold
-                 if (dotProd > 0.8f) 
+                 if (dotProd > 0.9f) 
                  {
                     Debug.Log("Enemy can be Eliminated");
+                    Destroy(enemy.gameObject);
                  }
 
                  else {
@@ -56,11 +57,11 @@ public class Takedown : MonoBehaviour
                  }
             }
 
-            // check if player is behind enemy
-
             // check for line of sight
+            // might not need if we reduce the range
 
             // destroy ghost
+
 
             // break
         }
