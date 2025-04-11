@@ -49,7 +49,8 @@ public class Takedown : MonoBehaviour
                  if (dotProd > 0.9f) 
                  {
                     Debug.Log("Enemy can be Eliminated");
-                    Destroy(enemy.gameObject);
+                    enemy.GetComponent<TriggerDeath>().Death();
+                    //Destroy(enemy.gameObject);
                  }
 
                  else {
