@@ -7,6 +7,9 @@ TagManager:
   - Ghost
   - Key
   - Lock
+  - Open Door
+  - Remove Wall
+  - Remove Door
   layers:
   - Default
   - TransparentFX
