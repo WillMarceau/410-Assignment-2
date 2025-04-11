@@ -5,16 +5,19 @@ public class Takedown : MonoBehaviour
 
     public const float takedownRange = 0.8f;
     public LayerMask Enemy;
+    Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        // get animator
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.E)) 
+        {
             Murder();
         }
     }
@@ -49,6 +52,7 @@ public class Takedown : MonoBehaviour
                  if (dotProd > 0.9f) 
                  {
                     Debug.Log("Enemy can be Eliminated");
+                    animator.SetTrigger("MurderTrigger");
                     enemy.GetComponent<TriggerDeath>().Death();
                     //Destroy(enemy.gameObject);
                  }
