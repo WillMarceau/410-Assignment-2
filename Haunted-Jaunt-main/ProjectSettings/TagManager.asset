@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ghost
+  - Key
+  - Lock
+  - Open Door
+  - Remove Wall
+  - Remove Door
   layers:
   - Default
   - TransparentFX
