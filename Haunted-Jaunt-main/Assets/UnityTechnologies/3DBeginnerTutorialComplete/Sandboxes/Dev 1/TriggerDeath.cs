@@ -13,12 +13,27 @@ public class TriggerDeath : MonoBehaviour
         // activate dying
         dying = true;
 
+        // stop movement
+        UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        if (agent != null)
+        {
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+        }
+
         // disable observer
         Observer obs = GetComponentInChildren<Observer>();
         if (obs != null) 
         {
             obs.enabled = false;
         }
+
+
+        //WaypointPatrol wp = GetComponent<WaypointPatrol>();
+        //if (wp != null) 
+        //{
+          //  wp.enabled = false;
+        //}
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
