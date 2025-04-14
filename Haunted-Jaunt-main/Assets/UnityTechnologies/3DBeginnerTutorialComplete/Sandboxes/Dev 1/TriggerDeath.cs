@@ -8,10 +8,20 @@ public class TriggerDeath : MonoBehaviour
 
     private bool dying = false;
 
+    public GameObject Urn;
+
+    public float yUrnOffset = -0.5f;
+
      public void Death() 
     {
         // activate dying
         dying = true;
+
+        // urn spawn point
+        Vector3 spawnPoint = transform.position + Vector3.up * yUrnOffset;
+
+        // spawn urn
+        Instantiate(Urn, spawnPoint, Quaternion.identity);
 
         // stop movement
         UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();

@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float turnSpeed = 20f;
 
+    public bool canMove = true;
+
     Animator m_Animator;
     Rigidbody m_Rigidbody;
     AudioSource m_AudioSource;
@@ -21,6 +23,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate ()
     {
+        if (!canMove) 
+        {
+            return;
+        }
         float horizontal = Input.GetAxis ("Horizontal");
         float vertical = Input.GetAxis ("Vertical");
         
