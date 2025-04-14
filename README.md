@@ -13,7 +13,7 @@ Kylie Griffiths
 2. # Linear Interpolation:
   ## Key Unlocks a Door
   - In the room to the left of the starting position, there is a rotating key. John Lemons can pick this key up and put it on his head.
-  - There's a locked door along the path that has a padlock and is radiating white particles, indicating it wants a key. Once the key is inserted, the particles change color to red and the door opens. The linear interpolation was used to rotate the door to open. 
+  - There's a locked door along the path that has a padlock and is radiating white particles, indicating it wants a key. Once the key is inserted by pressing E near the door, the particles change color to red and the door opens. The linear interpolation was used to rotate the door to open. 
     
 3. # Particles:
    ## Unlocking Door Changes Particles
@@ -22,4 +22,7 @@ Kylie Griffiths
 4. # Sound:
    ## Picking Up Key
    When the key is picked up, it makes a metallic sound as it enters John Lemon's pocket.
+
+   ## Unlocking the Door
+   When the door is opened using a key, there's a short sound of an unlocking mechanism.
 
