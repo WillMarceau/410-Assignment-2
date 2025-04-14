@@ -4,8 +4,13 @@ public class Takedown : MonoBehaviour
 {
 
     public const float takedownRange = 0.8f;
+    public Transform urnTransform;
     public LayerMask Enemy;
     private bool death = false;
+    public GameObject Urn;
+    //public float yUrnOffset = -0.5f;
+    public float spawnDistance = 20f;
+    //public Transform urnTransform;
     Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,13 +55,26 @@ public class Takedown : MonoBehaviour
                  float dotProd = Vector3.Dot(playerDirection, toEnemy);
 
                  // if in threshold
-                 if (dotProd > 0.9f) 
+                 if (dotProd > 0.90f) 
                  {
                     Debug.Log("Enemy can be Eliminated");
                     if (!death) 
                     {
+                        // face enemy
+                        //toEnemy.y = 0f;
+                        //if (toEnemy != Vector3.zero)
+                        //{
+                          //  Quaternion targetRotation = Quaternion.LookRotation(toEnemy);
+                           // transform.rotation= targetRotation;
+                        //}
+
+                        // spawn urn
+                        //SpawnUrn();
+                        //FaceUrn();
                         animator.SetTrigger("MurderTrigger");
                         animator.SetBool("Death", true);
+                        SpawnUrn();
+                        //FaceUrn();
                         enemy.GetComponent<TriggerDeath>().Death();
                     }
                     //Destroy(enemy.gameObject);
@@ -75,5 +93,34 @@ public class Takedown : MonoBehaviour
 
             // break
         }
+    }
+    
+    /*void FaceUrn() {
+
+        // get urn direction
+        Vector3 direction = urnTransform.position - transform.position;
+
+        // disable up / down rotation
+        direction.y = 0f;
+
+        // check for zero
+        if (direction != Vector3.zero)
+        {
+            // rotate goal
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = targetRotation;
+        }
+    }
+    */
+
+
+    void SpawnUrn() 
+    {
+        // spawn urn in front of player, on the ground
+        Vector3 spawnPosition = transform.position + transform.forward * 0.75f; //+ (-transform.right * 0.05f);
+
+        GameObject spawnedUrn = Instantiate(Urn, spawnPosition, Quaternion.identity);
+
+        urnTransform = spawnedUrn.transform;
     }
 }

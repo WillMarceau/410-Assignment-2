@@ -8235,6 +8235,9 @@ MonoBehaviour:
   Enemy:
     serializedVersion: 2
     m_Bits: 64
+  Urn: {fileID: 4102242730331340607, guid: 6c6a89cdb00b548b09698ec4e35bd67b, type: 3}
+  yUrnOffset: -0.5
+  spawnDistance: 1.5
 --- !u!114 &6077229646317852093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8510,8 +8513,6 @@ MonoBehaviour:
   spinSpeed: 360
   shrinkSpeed: 1
   fallSpeed: 2
-  Urn: {fileID: 4102242730331340607, guid: 6c6a89cdb00b548b09698ec4e35bd67b, type: 3}
-  yUrnOffset: -0.5
 --- !u!1001 &7048266704142702877
 PrefabInstance:
   m_ObjectHideFlags: 0

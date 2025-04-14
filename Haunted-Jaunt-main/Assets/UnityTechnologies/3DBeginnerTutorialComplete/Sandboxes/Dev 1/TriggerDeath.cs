@@ -6,11 +6,15 @@ public class TriggerDeath : MonoBehaviour
     public float shrinkSpeed = 1f;
     public float fallSpeed = 2f;
 
+    public float moveSpeed = 2f;
+
     private bool dying = false;
 
-    public GameObject Urn;
+    private Transform urnTransform;
 
-    public float yUrnOffset = -0.5f;
+    //public GameObject Urn;
+
+    //public float yUrnOffset = -0.5f;
 
      public void Death() 
     {
@@ -18,10 +22,10 @@ public class TriggerDeath : MonoBehaviour
         dying = true;
 
         // urn spawn point
-        Vector3 spawnPoint = transform.position + Vector3.up * yUrnOffset;
+        //Vector3 spawnPoint = transform.position + Vector3.up * yUrnOffset;
 
         // spawn urn
-        Instantiate(Urn, spawnPoint, Quaternion.identity);
+        //Instantiate(Urn, spawnPoint, Quaternion.identity);
 
         // stop movement
         UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -36,6 +40,14 @@ public class TriggerDeath : MonoBehaviour
         if (obs != null) 
         {
             obs.enabled = false;
+        }
+
+        // get urn location
+        Takedown takedownScript = FindObjectOfType<Takedown>();
+
+        if (takedownScript != null) 
+        {
+            urnTransform = takedownScript.urnTransform;
         }
 
 
@@ -57,6 +69,12 @@ public class TriggerDeath : MonoBehaviour
     {
         if (dying)
         {
+
+            // get direction of urn
+            Vector3 directionToUrn = urnTransform.position - transform.position;
+            directionToUrn.y = 0f;
+            urnTransform.position = Vector3.MoveTowards(transform.position, urnTransform.position, Time.deltaTime * 2f);
+
             // spin
             transform.Rotate(Vector3.up, spinSpeed * Time.deltaTime);
 
