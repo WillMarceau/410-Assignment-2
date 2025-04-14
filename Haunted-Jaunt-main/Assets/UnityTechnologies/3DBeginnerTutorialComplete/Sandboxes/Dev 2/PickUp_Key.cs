@@ -1,37 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Compression;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Rendering.PostProcessing;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PickUp_Key : MonoBehaviour
 {
     public const float key_range = 0.9f;
+    public const float key_speed = 6.0f;
     public const int rotation_speed = 3;
 
-    bool rotating;
     public GameObject door_lock;
+    private Key_Script key_script;
     private GameObject door;
     private GameObject remove_door;
-    private GameObject key;
+    public GameObject key;
 
     private GameObject open_wall;
+
+    private bool key_found;
     private GameObject player;
     public ParticleSystem ps;
     private ParticleSystem.MainModule _main;
-    List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         door_lock = GameObject.FindGameObjectWithTag("Lock");
-        key = GameObject.FindGameObjectWithTag("Key");
+        key_script = key.GetComponent<Key_Script>();
+        //key = GameObject.FindGameObjectWithTag("Key");
         player = GameObject.FindGameObjectWithTag("Player");
         door = GameObject.FindGameObjectWithTag("Open Door");
         remove_door = GameObject.FindGameObjectWithTag("Remove Door");
         open_wall = GameObject.FindGameObjectWithTag("Remove Wall");
         //ps = door_lock.GetComponent<ParticleSystem>();
         _main = ps.main;
+    }
+
+    public GameObject Get_Player() {
+        return player;
     }
 
     void OnEnable()
@@ -58,7 +68,6 @@ public class PickUp_Key : MonoBehaviour
     }
 
     IEnumerator Rotate90() {
-        rotating = true;
         float timeElapsed = 0;
         Quaternion start = door.transform.rotation;
         Quaternion target = door.transform.rotation * Quaternion.Euler(0,100,0);
@@ -68,7 +77,6 @@ public class PickUp_Key : MonoBehaviour
             yield return null;
         }
         door.transform.rotation = target;
-        rotating = false;
         door.transform.rotation = new Quaternion(door.transform.rotation.x, 180f - door.transform.rotation.y, door.transform.rotation.z, door.transform.rotation.w);
     }
 
@@ -83,7 +91,10 @@ public class PickUp_Key : MonoBehaviour
     void OnTriggerEnter(Collider key) {
         if (key.gameObject.CompareTag("Key")) 
         {
-        key.gameObject.SetActive(false);
+            key.gameObject.tag = "Following_Key";
+            key_found = true;
+            key_script.following = true;
+
         }
     }
 
@@ -95,14 +106,30 @@ public class PickUp_Key : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if (key_found == true) {
+            Vector3 player_position = player.transform.position;
+            Vector3 offset = player_position - key.transform.position;
+            player_position.y = player_position.y + 0.5f;
+            player_position = player_position - (offset.normalized * 1.0f);
+            key.transform.position = Vector3.MoveTowards(key.transform.position, player_position, key_speed * Time.deltaTime);
+            Quaternion new_euler = Quaternion.Euler(player.transform.eulerAngles - new Vector3(0,180,0));
+            key.transform.rotation = Quaternion.RotateTowards(key.transform.rotation,new_euler,Time.deltaTime * 130);
+        }  
+    }
+
+
 
     void UnlockDoor() {
 
         float distanceToKey = Vector3.Distance(door_lock.transform.position, player.transform.position);
         if (distanceToKey < key_range) {
             // Lock is close enough
-            if (key.activeSelf == false) {
+            if (key_script.following == true) {
                 // User has key
+                key.SetActive(false);
+                key_found = false;
                 OnParticleTrigger();
                 door_lock.SetActive(false);
                 AnimateDoor();

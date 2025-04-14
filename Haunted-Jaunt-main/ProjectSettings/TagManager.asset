@@ -10,6 +10,7 @@ TagManager:
   - Open Door
   - Remove Wall
   - Remove Door
+  - Following_Key
   layers:
   - Default
   - TransparentFX
