@@ -16,6 +16,10 @@ public class PickUp_Key : MonoBehaviour
     public GameObject door_lock;
     private Key_Script key_script;
     private GameObject door;
+
+    private int count;
+    private AudioSource door_source;
+    public AudioClip unlock_sound;
     private GameObject remove_door;
     public GameObject key;
 
@@ -36,8 +40,10 @@ public class PickUp_Key : MonoBehaviour
         door = GameObject.FindGameObjectWithTag("Open Door");
         remove_door = GameObject.FindGameObjectWithTag("Remove Door");
         open_wall = GameObject.FindGameObjectWithTag("Remove Wall");
+        door_source = door.GetComponent<AudioSource>();
         //ps = door_lock.GetComponent<ParticleSystem>();
         _main = ps.main;
+        count = 0;
     }
 
     public GameObject Get_Player() {
@@ -119,6 +125,12 @@ public class PickUp_Key : MonoBehaviour
         }  
     }
 
+    void PlayDoorSound() {
+        if (count == 0) {
+            door_source.PlayOneShot(unlock_sound);
+        }
+    }
+
 
 
     void UnlockDoor() {
@@ -130,6 +142,7 @@ public class PickUp_Key : MonoBehaviour
                 // User has key
                 key.SetActive(false);
                 key_found = false;
+                PlayDoorSound();
                 OnParticleTrigger();
                 door_lock.SetActive(false);
                 AnimateDoor();
