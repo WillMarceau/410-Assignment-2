@@ -8140,6 +8140,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5473542879947854398, guid: e58a8494f35e17f45ba5bbffdfb92517,
+        type: 3}
+      propertyPath: m_TagString
+      value: Right_Hand
+      objectReference: {fileID: 0}
     - target: {fileID: 6077229646317852079, guid: e58a8494f35e17f45ba5bbffdfb92517,
         type: 3}
       propertyPath: m_Name
@@ -8374,9 +8379,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bcceacd75ca4309ab7bb9a295c1eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  urnTransform: {fileID: 0}
   Enemy:
     serializedVersion: 2
     m_Bits: 64
+  death: 0
+  Urn: {fileID: 4102242730331340607, guid: 6c6a89cdb00b548b09698ec4e35bd67b, type: 3}
+  urnLight: {fileID: 5193502310411816649, guid: 2c7a91a13d0304f149b5528c087617b1,
+    type: 3}
+  currentUrn: {fileID: 0}
+  spawnDistance: 1.5
 --- !u!114 &6077229646317852093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8405,6 +8417,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 997766418437563732, guid: abeb186619cc7e6419cb81e1e4dfa162,
+        type: 3}
+      propertyPath: Urn
+      value: 
+      objectReference: {fileID: 4102242730331340607, guid: 6c6a89cdb00b548b09698ec4e35bd67b,
+        type: 3}
+    - target: {fileID: 997766418437563732, guid: abeb186619cc7e6419cb81e1e4dfa162,
+        type: 3}
+      propertyPath: yUrnOffset
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1176990128951978394, guid: abeb186619cc7e6419cb81e1e4dfa162,
         type: 3}
@@ -8634,7 +8657,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300059009}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e41c14661693a49cc97937cf06289699, type: 3}
   m_Name: 
@@ -8642,6 +8665,7 @@ MonoBehaviour:
   spinSpeed: 360
   shrinkSpeed: 1
   fallSpeed: 2
+  moveSpeed: 2
 --- !u!1001 &7048266704142702877
 PrefabInstance:
   m_ObjectHideFlags: 0
