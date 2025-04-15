@@ -99,6 +99,7 @@ public class PickUp_Key : MonoBehaviour
         {
             key.gameObject.tag = "Following_Key";
             key_found = true;
+            key.GetComponent<Light>().enabled = false;
             key_script.following = true;
 
         }
@@ -131,7 +132,9 @@ public class PickUp_Key : MonoBehaviour
         }
     }
 
-
+    void DoorUnlock() {
+        key.transform.position = Vector3.MoveTowards(key.transform.position, door_lock.transform.position, Time.deltaTime*0.9f);
+    }
 
     void UnlockDoor() {
 
@@ -142,6 +145,7 @@ public class PickUp_Key : MonoBehaviour
                 // User has key
                 key.SetActive(false);
                 key_found = false;
+                DoorUnlock();
                 PlayDoorSound();
                 OnParticleTrigger();
                 door_lock.SetActive(false);
