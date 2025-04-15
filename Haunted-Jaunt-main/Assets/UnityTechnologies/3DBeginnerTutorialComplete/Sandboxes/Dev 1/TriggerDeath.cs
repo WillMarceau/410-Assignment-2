@@ -89,6 +89,8 @@ public class TriggerDeath : MonoBehaviour
             if (transform.localScale.x <= 0.01f)
             {
                 Destroy(gameObject);
+                Takedown takedownScript = FindObjectOfType<Takedown>();
+                takedownScript.death = false;
             }
         }
 

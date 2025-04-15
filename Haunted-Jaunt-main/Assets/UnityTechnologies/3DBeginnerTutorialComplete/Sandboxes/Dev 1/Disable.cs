@@ -86,8 +86,6 @@ public class Disable : StateMachineBehaviour
             Vector3 position = currentUrn.transform.position;
             Quaternion rotation = currentUrn.transform.rotation;
 
-            GameObject.Destroy(currentUrn);
-
             GameObject lidUrn = GameObject.Instantiate(urnWithLid, position, rotation);
             GameObject.Destroy(currentUrn);
 

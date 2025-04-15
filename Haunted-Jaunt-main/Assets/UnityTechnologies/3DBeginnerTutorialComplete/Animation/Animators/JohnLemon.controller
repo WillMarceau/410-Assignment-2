@@ -58,6 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lid: {fileID: 0}
   urnWithLid: {fileID: 0}
+  urnParticles: {fileID: 0}
 --- !u!114 &-796769606407340002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -375,3 +376,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lid: {fileID: 3700331308912967477, guid: f04266b2c5b02420ebf478067d90e403, type: 3}
   urnWithLid: {fileID: 5997160560921538, guid: 633fa9fbb288b47008dc7c4f7606333f, type: 3}
+  urnParticles: {fileID: 8623420713833352617, guid: 14362b4a295a84164aa08dda3493d429,
+    type: 3}
