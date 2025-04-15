@@ -33,6 +33,7 @@ public class Disable : StateMachineBehaviour
     //}
 
     public GameObject lid;
+    public GameObject urnWithLid;
     private Transform rightHand;
     private GameObject spawnedLid;
 
@@ -73,6 +74,22 @@ public class Disable : StateMachineBehaviour
 
         // remove lid
         GameObject.Destroy(spawnedLid);
+
+        // create lidded urn on old urn
+        Takedown script = FindObjectOfType<Takedown>();
+        GameObject currentUrn = script.currentUrn;
+
+        if (currentUrn != null)
+        {
+            Vector3 position = currentUrn.transform.position;
+            Quaternion rotation = currentUrn.transform.rotation;
+
+            GameObject.Destroy(currentUrn);
+
+            GameObject lidUrn = GameObject.Instantiate(urnWithLid, position, rotation);
+             GameObject.Destroy(currentUrn);
+        }
+
     }
 }
 

@@ -8,6 +8,7 @@ public class Takedown : MonoBehaviour
     public LayerMask Enemy;
     private bool death = false;
     public GameObject Urn;
+    public GameObject currentUrn;
     //public float yUrnOffset = -0.5f;
     public float spawnDistance = 20f;
     //public Transform urnTransform;
@@ -117,12 +118,13 @@ public class Takedown : MonoBehaviour
     void SpawnUrn() 
     {
         // spawn urn in front of player, on the ground
-        Vector3 spawnPosition = transform.position + transform.forward * 0.75f; //+ (-transform.right * 0.05f);
+        Vector3 spawnPosition = transform.position + transform.forward * 0.75f + transform.up * 0.3f; //+ (-transform.right * 0.05f);
         //spawnPosition.y = 0.5f;
         Debug.Log("Spawn Position: " + spawnPosition);
         GameObject spawnedUrn = Instantiate(Urn, spawnPosition, Quaternion.identity);
         Debug.Log("Urn Actual Position: " + spawnedUrn.transform.position);
 
         urnTransform = spawnedUrn.transform;
+        currentUrn = spawnedUrn;
     }
 }
