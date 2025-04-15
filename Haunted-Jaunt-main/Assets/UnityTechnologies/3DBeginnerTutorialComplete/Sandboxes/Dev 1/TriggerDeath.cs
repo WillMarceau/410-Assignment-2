@@ -43,7 +43,7 @@ public class TriggerDeath : MonoBehaviour
         }
 
         // get urn location
-        Takedown takedownScript = FindObjectOfType<Takedown>();
+        Takedown takedownScript = FindFirstObjectByType<Takedown>();
 
         if (takedownScript != null) 
         {
@@ -89,7 +89,7 @@ public class TriggerDeath : MonoBehaviour
             if (transform.localScale.x <= 0.01f)
             {
                 Destroy(gameObject);
-                Takedown takedownScript = FindObjectOfType<Takedown>();
+                Takedown takedownScript = FindFirstObjectByType<Takedown>();
                 takedownScript.death = false;
             }
         }

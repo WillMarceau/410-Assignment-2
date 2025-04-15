@@ -62,7 +62,7 @@ public class Disable : StateMachineBehaviour
 
         // get right hand
         //rightHand = animator.GetBoneTransform(HumanBodyBones.Righthand);
-        if (rightHand != null && layerIndex != null) 
+        if (rightHand != null) 
         {
             Debug.Log("Got to here");
             spawnedLid = GameObject.Instantiate(lid, rightHand);
@@ -78,7 +78,7 @@ public class Disable : StateMachineBehaviour
         GameObject.Destroy(spawnedLid);
 
         // create lidded urn on old urn
-        Takedown script = FindObjectOfType<Takedown>();
+        Takedown script = FindFirstObjectByType<Takedown>();
         GameObject currentUrn = script.currentUrn;
 
         if (currentUrn != null)
