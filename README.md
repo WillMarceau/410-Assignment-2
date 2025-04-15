@@ -42,6 +42,7 @@ Kylie Griffiths
 ![Door Lock](https://github.com/user-attachments/assets/2c31269c-db65-4ef2-8a98-d92c5343a0a7)
 
 #### Urn (Will):
+![Urn with lid 3](https://github.com/user-attachments/assets/ffd5e555-0383-413c-9bdc-0a459187fa65)
 
 ** TODO **
 
