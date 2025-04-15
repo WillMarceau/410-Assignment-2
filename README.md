@@ -44,11 +44,12 @@ Kylie Griffiths
 #### Urn (Will):
 ![Urn with lid 3](https://github.com/user-attachments/assets/ffd5e555-0383-413c-9bdc-0a459187fa65)
 
-** TODO **
-
 2. ## Animations:
 
 #### Trapping Ghosts (Will):
 
-** TODO **
+
+https://github.com/user-attachments/assets/b132cbd7-9077-4f76-9467-662a23af9fce
+
+
 
