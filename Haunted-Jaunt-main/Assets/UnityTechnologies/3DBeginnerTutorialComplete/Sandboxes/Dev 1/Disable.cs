@@ -37,6 +37,8 @@ public class Disable : StateMachineBehaviour
     private Transform rightHand;
     private GameObject spawnedLid;
 
+    public GameObject urnParticles;
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
     {
         // get player
@@ -84,10 +86,12 @@ public class Disable : StateMachineBehaviour
             Vector3 position = currentUrn.transform.position;
             Quaternion rotation = currentUrn.transform.rotation;
 
+            GameObject lidUrn = GameObject.Instantiate(urnWithLid, position, rotation);
             GameObject.Destroy(currentUrn);
 
-            GameObject lidUrn = GameObject.Instantiate(urnWithLid, position, rotation);
-             GameObject.Destroy(currentUrn);
+            // spawn particles
+            GameObject particles = Instantiate(urnParticles, position + new Vector3(0f, 0.3f, 0f), Quaternion.identity);
+            //particles.transform.SetParent(lidUrn);
         }
 
     }

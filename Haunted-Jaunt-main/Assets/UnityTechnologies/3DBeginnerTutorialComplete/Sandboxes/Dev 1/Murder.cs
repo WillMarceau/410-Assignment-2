@@ -6,8 +6,9 @@ public class Takedown : MonoBehaviour
     public const float takedownRange = 0.8f;
     public Transform urnTransform;
     public LayerMask Enemy;
-    private bool death = false;
+    public bool death = false;
     public GameObject Urn;
+    public GameObject urnLight;
     public GameObject currentUrn;
     //public float yUrnOffset = -0.5f;
     public float spawnDistance = 20f;
@@ -61,6 +62,7 @@ public class Takedown : MonoBehaviour
                     Debug.Log("Enemy can be Eliminated");
                     if (!death) 
                     {
+                        death = true;
                         // face enemy
                         //toEnemy.y = 0f;
                         //if (toEnemy != Vector3.zero)
@@ -126,5 +128,10 @@ public class Takedown : MonoBehaviour
 
         urnTransform = spawnedUrn.transform;
         currentUrn = spawnedUrn;
+
+        // spawn light
+        GameObject spawnedLight = Instantiate(urnLight);
+        spawnedLight.transform.SetParent(urnTransform);
+        spawnedLight.transform.localPosition = new Vector3(0f, -0.1f, 0f);
     }
 }
