@@ -9,7 +9,7 @@ Kylie Griffiths
 1. ## Dot Product:
   #### Proximity and Orientation-Based Enemy Murder (Will)
   - If walking closely behind an enemy, the player can press "E" to kill the enemy. This will trigger a killing animation where the ghost is stuffed in an urn.
-    - The dot product was used to calculate if the player is behind a ghost.
+    - The dot product was used to calculate if the player is behind a ghost and facing the same direction.
 
 2. ## Linear Interpolation:
   #### Key Unlocks a Door (Kylie)
@@ -21,7 +21,7 @@ Kylie Griffiths
    #### Unlocking Door Changes Particles (Kylie)
   - As the door is unlocked, particles change from white to quick red and then fizzle out, indicating the lock is removed and the door is ready to open.
     #### Trapping Ghost in Urn (Will)
-  - As a ghost is being trapped in an urn, a purple glow emits from John Lemons' hand. Further, once the ghost is in the urn that's left on the ground, this urn emits small purple particles into the air. 
+  - As a ghost is being trapped in an urn, a purple glow emits from the Urn. Further, once the ghost is in the urn that's left on the ground, this urn emits small purple particles into the air indicating that the ghost has been captured. 
 
 4. ## Sound:
    #### Picking Up Key (Kylie)
