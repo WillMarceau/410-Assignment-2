@@ -73,7 +73,8 @@ public class TriggerDeath : MonoBehaviour
             // get direction of urn
             Vector3 directionToUrn = urnTransform.position - transform.position;
             directionToUrn.y = 0f;
-            urnTransform.position = Vector3.MoveTowards(transform.position, urnTransform.position, Time.deltaTime * 2f);
+            //urnTransform.position = Vector3.MoveTowards(transform.position, urnTransform.position, Time.deltaTime * 2f);
+            transform.position = Vector3.MoveTowards(transform.position, urnTransform.position, Time.deltaTime * 2f);
 
             // spin
             transform.Rotate(Vector3.up, spinSpeed * Time.deltaTime);

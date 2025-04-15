@@ -11,6 +11,7 @@ TagManager:
   - Remove Wall
   - Remove Door
   - Following_Key
+  - Right_Hand
   layers:
   - Default
   - TransparentFX
